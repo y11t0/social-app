@@ -55,7 +55,8 @@ interface AppLanguageConfig {
 }
 
 export const APP_LANGUAGES: AppLanguageConfig[] = [
-  {code2: AppLanguage.en, name: 'English'},
+  {code2: AppLanguage.en, name: 'English (United States)'},
+  {code2: AppLanguage.en_GB, name: 'English (United Kingdom)'},
   {code2: AppLanguage.an, name: 'aragonés – Aragonese'},
   {code2: AppLanguage.ast, name: 'asturianu – Asturian'},
   {code2: AppLanguage.ca, name: 'català – Catalan'},
@@ -64,7 +65,6 @@ export const APP_LANGUAGES: AppLanguageConfig[] = [
   {code2: AppLanguage.da, name: 'dansk – Danish'},
   {code2: AppLanguage.de, name: 'Deutsch – German'},
   {code2: AppLanguage.el, name: 'Ελληνικά – Greek'},
-  {code2: AppLanguage.en_GB, name: 'British English'},
   {code2: AppLanguage.eo, name: 'Esperanto'},
   {code2: AppLanguage.es, name: 'español – Spanish'},
   {code2: AppLanguage.eu, name: 'euskara – Basque'},
