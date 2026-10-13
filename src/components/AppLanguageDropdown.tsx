@@ -12,6 +12,28 @@ import * as Select from '#/components/Select'
 import {Button, ButtonIcon} from './Button'
 import {Earth_Stroke2_Corner2_Rounded as EarthIcon} from './icons/Globe'
 
+const ENGLISH_VARIANT_LABELS: Record<string, string> = {
+  en: 'English (United States)',
+  'en-GB': 'English (United Kingdom)',
+}
+
+function getAppLanguageItems() {
+  const items: {label: string; value: string}[] = APP_LANGUAGES.map(l => ({
+    label: ENGLISH_VARIANT_LABELS[l.code2] ?? l.name,
+    value: l.code2,
+  }))
+  // keep English variants next to each other, starting with en
+  const gbIndex = items.findIndex(i => i.value === 'en-GB')
+  if (gbIndex !== -1 && items.some(i => i.value === 'en')) {
+    const [gb] = items.splice(gbIndex, 1)
+    const enIndex = items.findIndex(i => i.value === 'en')
+    items.splice(enIndex + 1, 0, gb)
+  }
+  return items
+}
+
+const APP_LANGUAGE_ITEMS = getAppLanguageItems()
+
 export function AppLanguageDropdown() {
   const t = useTheme()
   const {_} = useLingui()
@@ -75,10 +97,7 @@ export function AppLanguageDropdown() {
             <Select.ItemText>{label}</Select.ItemText>
           </Select.Item>
         )}
-        items={APP_LANGUAGES.map(l => ({
-          label: l.name,
-          value: l.code2,
-        }))}
+        items={APP_LANGUAGE_ITEMS}
       />
     </Select.Root>
   )
